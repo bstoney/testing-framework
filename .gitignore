@@ -1,0 +1,9 @@
+# JetBrains folder
+.idea/*
+
+# Build output
+**/bin/*
+**/obj/*
+**/TestResults/*
+.vs/
+**/out/*
