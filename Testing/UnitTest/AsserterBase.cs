@@ -1,0 +1,79 @@
+namespace Testing.UnitTest
+{
+	/// <summary>
+	/// AbstractAsserter is the base class for all asserters.
+	/// Asserters encapsulate a condition test and generation
+	/// of an AssertionException with a tailored message. They
+	/// are used by the Assert class as helper objects.
+	///
+	/// User-defined asserters may be passed to the
+	/// Assert.DoAssert method in order to implement
+	/// extended asserts.
+	/// </summary>
+	public abstract class AsserterBase : IAsserter
+	{
+		/// <summary>
+		/// The user-defined message for this asserter.
+		/// </summary>
+		protected readonly string userMessage;
+
+		/// <summary>
+		/// Arguments to use in formatting the user-defined message.
+		/// </summary>
+		protected readonly object[] args;
+
+		/// <summary>
+		/// Our failure message object, initialized as needed
+		/// </summary>
+		private AssertionFailureMessage failureMessage;
+
+		/// <summary>
+		/// Constructs an AbstractAsserter
+		/// </summary>
+		/// <param name="message">The message issued upon failure</param>
+		/// <param name="args">Arguments to be used in formatting the message</param>
+		protected AsserterBase( string message, params object[] args )
+		{
+			// TODO: Brad: need a way to tell which Assert in a method failed without
+			// adding a custom user message ie a line number or value of the input parameter
+			// *shrug* lazy
+			userMessage = string.IsNullOrEmpty(message) ? this.GetType().Name : message;
+			this.args = args;
+		}
+
+		/// <summary>
+		/// AssertionFailureMessage object used internally
+		/// </summary>
+		protected AssertionFailureMessage FailureMessage
+		{
+			get
+			{
+				if( failureMessage == null )
+				{
+					failureMessage = new AssertionFailureMessage( userMessage, args );
+				}
+				return failureMessage;
+			}
+		}
+
+		#region IAsserter Interface
+
+		/// <summary>
+		/// Test method to be implemented by derived types.
+		/// Default always succeeds.
+		/// </summary>
+		/// <returns>True if the test succeeds</returns>
+		public abstract bool Test();
+
+		/// <summary>
+		/// Message related to a failure. If no failure has
+		/// occured, the result is unspecified.
+		/// </summary>
+		public virtual string Message
+		{
+			get { return FailureMessage.ToString(); }
+		}
+
+		#endregion
+	}
+}

@@ -1,0 +1,157 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9BDF3CA4-B567-4581-BEC5-6A75BCB3BCBD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestingTestSuite</RootNamespace>
+    <AssemblyName>TestingTestSuite</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Testing</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;Testing</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ZaneBug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ZaneBug</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'nUnit|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;nUnit</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttributeTests\CoverageExcludeAttributeTests.cs" />
+    <Compile Include="AttributeTests\FunctionTests\MaximumExecutionTimeAttributeTests.cs" />
+    <Compile Include="AttributeTests\FunctionTests\MockOrderedFixture.cs" />
+    <Compile Include="AttributeTests\FunctionTests\OrderedFixtureAttributeTests.cs" />
+    <Compile Include="AttributeTests\FunctionTests\OrderedTestSuiteAttributeTests.cs" />
+    <Compile Include="AttributeTests\FunctionTests\TestOrderAttributeTests.cs" />
+    <Compile Include="AttributeTests\IgnoreAttributeTests.cs" />
+    <Compile Include="AttributeTests\SetUpAttributeTests.cs" />
+    <Compile Include="AttributeTests\TearDownAttributeTests.cs" />
+    <Compile Include="AttributeTests\TestAttributeTests.cs" />
+    <Compile Include="AttributeTests\TestFixtureAttributeTests.cs" />
+    <Compile Include="AttributeTests\TestFixtureSetUpAttributeTests.cs" />
+    <Compile Include="AttributeTests\TestFixtureTearDownAttributeTests.cs" />
+    <Compile Include="AttributeTests\UnitTests\ExpectedExceptionAttributeTests.cs" />
+    <Compile Include="AttributeTests\UnitTests\ExpectedExceptionCountAttributeTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttributeTests\UnitTests\ParameterisedTestAttributeTests.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="MockTestFramework\MockFixture.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MockTestFramework\MockIFixture.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MockTestFramework\MockITest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MockTestFramework\MockITestSuite.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MockTestFramework\MockTestingHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MockTestFramework\MockTestRunner.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrderedTests\ApplesFixture.cs" />
+    <Compile Include="OrderedTests\BananasFixture.cs" />
+    <Compile Include="OrderedTests\OrangesFixture.cs" />
+    <Compile Include="OrderedTests\PearsFixture.cs" />
+    <Compile Include="RunAllTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestRunner\ConsoleRunner\ConsoleTestRunnerTest.cs" />
+    <Compile Include="TestRunner\ConsoleRunner\TestNamespace\TestTest.cs" />
+    <Compile Include="TestRunner\DefaultRunner\InvalidFixtureRunner.cs" />
+    <Compile Include="TestRunner\DefaultRunner\FixtureRunnerFailingTests.cs" />
+    <Compile Include="TestRunner\DefaultRunner\InvalidTestRunner.cs" />
+    <Compile Include="TestRunner\DefaultRunner\TestRunnerFailingTests.cs" />
+    <Compile Include="TestRunner\DefaultRunner\TearDownFailingTests.cs" />
+    <Compile Include="TestRunner\DefaultRunner\SetUpFailingTests.cs" />
+    <Compile Include="TestRunner\DefaultRunner\TestFixtureTearDownFailingTests.cs" />
+    <Compile Include="TestRunner\DefaultRunner\TestFixtureSetUpFailingTests.cs" />
+    <Compile Include="UnitTest\AssertionFailureMessageTests.cs" />
+    <Compile Include="UnitTest\AssertTests.cs" />
+    <Compile Include="UnitTest\MockObjects.cs" />
+    <Compile Include="UnitTest\PrivateObjectTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Testing\Testing.csproj">
+      <Project>{264A512E-919B-48AA-88C7-F99F5C0171F4}</Project>
+      <Name>Testing</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestRunner\ConsoleRunner\Results.xsd">
+      <SubType>
+      </SubType>
+    </EmbeddedResource>
+    <None Include="TestRunner\ConsoleRunner\Results.xsx">
+      <DependentUpon>Results.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestRunner\ConsoleRunner\Summary.xslt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
